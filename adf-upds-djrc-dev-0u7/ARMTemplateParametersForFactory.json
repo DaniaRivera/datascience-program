@@ -4,6 +4,15 @@
 	"parameters": {
 		"factoryName": {
 			"value": "adf-upds-djrc-dev-0u7"
+		},
+		"FileLinkedService_password": {
+			"value": ""
+		},
+		"FileLinkedService_properties_typeProperties_host": {
+			"value": "\\\\MSI\\C$\\Users\\Dania\\sharedknow"
+		},
+		"FileLinkedService_properties_typeProperties_userId": {
+			"value": "DANIA"
 		}
 	}
 }
