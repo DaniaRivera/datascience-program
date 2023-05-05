@@ -1,0 +1,64 @@
+{
+	"name": "dataflow5",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          AcceptedAnswerId as string,",
+				"          AnswerCount as string,",
+				"          ClosedDate as string,",
+				"          CommentCount as string,",
+				"          CommunityOwnedDate as string,",
+				"          CreationDate as string,",
+				"          FavoriteCount as string,",
+				"          LastActivityDate as string,",
+				"          LastEditDate as string,",
+				"          LastEditorUserId as string,",
+				"          OwnerUserId as string,",
+				"          ParentId as string,",
+				"          PostTypeId as string,",
+				"          Score as string,",
+				"          Tags as string,",
+				"          ViewCount as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source1",
+				"source1 derive(Id = toInteger(Id),",
+				"          AcceptedAnswerId = toInteger(AcceptedAnswerId),",
+				"          AnswerCount = toInteger(AnswerCount),",
+				"          ClosedDate = toTimestamp(ClosedDate),",
+				"          CommentCount = toInteger(CommentCount),",
+				"          CommunityOwnedDate = toTimestamp(CommunityOwnedDate),",
+				"          CreationDate = toTimestamp(CreationDate),",
+				"          FavoriteCount = toInteger(FavoriteCount),",
+				"          LastActivityDate = toTimestamp(LastActivityDate),",
+				"          LastEditDate = toTimestamp(LastEditDate),",
+				"          LastEditorUserId = toInteger(LastEditorUserId),",
+				"          OwnerUserId = toInteger(OwnerUserId),",
+				"          ParentId = toInteger(ParentId),",
+				"          PostTypeId = toInteger(PostTypeId),",
+				"          Score = toInteger(Score),",
+				"          ViewCount = toInteger(ViewCount)) ~> derivedColumn1"
+			]
+		}
+	}
+}
