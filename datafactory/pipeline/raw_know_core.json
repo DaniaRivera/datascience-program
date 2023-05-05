@@ -24,21 +24,27 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"sink": {
-						"type": "ParquetSink",
+					"source": {
+						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
+							"type": "FileServerReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"enableStaging": false
 				},
-				"outputs": [
+				"inputs": [
 					{
-						"referenceName": "ds_target_parquet",
-						"type": "DatasetReference"
+						"referenceName": "ds_source_csv",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": "sk_badges.csv",
+							"upname": "badges"
+						}
 					}
 				]
 			}
