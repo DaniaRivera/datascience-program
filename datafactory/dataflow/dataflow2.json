@@ -1,0 +1,41 @@
+{
+	"name": "dataflow2",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          CreationDate as string,",
+				"          PostId as string,",
+				"          Score as string,",
+				"          UserId as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source1",
+				"source1 derive(Id = toInteger(Id),",
+				"          CreationDate = toTimestamp(CreationDate),",
+				"          PostId = toInteger(PostId),",
+				"          Score = toInteger(Score),",
+				"          UserId = toInteger(UserId)) ~> derivedColumn1"
+			]
+		}
+	}
+}
