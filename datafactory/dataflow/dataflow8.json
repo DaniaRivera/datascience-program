@@ -1,0 +1,47 @@
+{
+	"name": "dataflow8",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          CreationDate as string,",
+				"          DownVotes as string,",
+				"          LastAccessDate as string,",
+				"          Reputation as string,",
+				"          UpVotes as string,",
+				"          Views as string,",
+				"          AccountId as string,",
+				"          Email as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source1",
+				"source1 derive(Id = toInteger(Id),",
+				"          CreationDate = toTimestamp(CreationDate),",
+				"          DownVotes = toInteger(DownVotes),",
+				"          LastAccessDate = toTimestamp(LastAccessDate),",
+				"          Reputation = toInteger(Reputation),",
+				"          UpVotes = toInteger(UpVotes),",
+				"          Views = toInteger(Views)) ~> derivedColumn1"
+			]
+		}
+	}
+}
