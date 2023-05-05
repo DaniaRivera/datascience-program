@@ -1,0 +1,41 @@
+{
+	"name": "dataflow4",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "derivedColumn1"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Id as string,",
+				"          CreationDate as string,",
+				"          PostId as string,",
+				"          RelatedPostId as string,",
+				"          LinkTypeId as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> source1",
+				"source1 derive(Id = toInteger(Id),",
+				"          CreationDate = toTimestamp(CreationDate),",
+				"          PostId = toInteger(PostId),",
+				"          RelatedPostId = toInteger(RelatedPostId),",
+				"          LinkTypeId = toInteger(LinkTypeId)) ~> derivedColumn1"
+			]
+		}
+	}
+}
