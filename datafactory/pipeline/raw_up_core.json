@@ -47,6 +47,10 @@
 				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
+					"pipeline": {
+						"referenceName": "raw_ga4_core",
+						"type": "PipelineReference"
+					},
 					"waitOnCompletion": true
 				}
 			},
