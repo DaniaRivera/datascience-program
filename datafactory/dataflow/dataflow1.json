@@ -43,6 +43,7 @@
 				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
+				"     filePattern:'m_badges[n].parquet',",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
