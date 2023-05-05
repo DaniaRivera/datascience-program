@@ -31,7 +31,7 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'parquet') ~> source1",
 				"source1 derive(Id = toInteger(Id),",
-				"          CreationDate = toTimestamp(CreationDate),",
+				"          CreationDate = toDate(CreationDate),",
 				"          PostId = toInteger(PostId),",
 				"          RelatedPostId = toInteger(RelatedPostId),",
 				"          LinkTypeId = toInteger(LinkTypeId)) ~> derivedColumn1"
