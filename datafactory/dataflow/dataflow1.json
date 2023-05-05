@@ -9,10 +9,18 @@
 						"referenceName": "ds_parquet",
 						"type": "DatasetReference"
 					},
-					"name": "source1"
+					"name": "RawBadges"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_master_source_parquet",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "derivedColumn1"
@@ -28,10 +36,18 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet') ~> source1",
-				"source1 derive(Id = toInteger(Id),",
+				"     format: 'parquet') ~> RawBadges",
+				"RawBadges derive(Id = toInteger(Id),",
 				"          UserId = toInteger(UserId),",
-				"          Date = toDate(Date)) ~> derivedColumn1"
+				"          Date = toDate(Date)) ~> derivedColumn1",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
