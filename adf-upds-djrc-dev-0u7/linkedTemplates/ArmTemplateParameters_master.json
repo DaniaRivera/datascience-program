@@ -5,20 +5,20 @@
 		"factoryName": {
 			"value": "adf-upds-djrc-dev-0u7"
 		},
+		"ADLS_LinkedService_accountKey": {
+			"value": ""
+		},
 		"FileLinkedService_password": {
 			"value": ""
 		},
-		"ADLS_LinkedService_accountKey": {
-			"value": ""
+		"ADLS_LinkedService_properties_typeProperties_url": {
+			"value": "https://dlsupdsdjrcdev89o.dfs.core.windows.net/"
 		},
 		"FileLinkedService_properties_typeProperties_host": {
 			"value": "\\\\MSI\\C$\\Users\\Dania\\sharedknow"
 		},
 		"FileLinkedService_properties_typeProperties_userId": {
 			"value": "DANIA"
-		},
-		"ADLS_LinkedService_properties_typeProperties_url": {
-			"value": "https://dlsupdsdjrcdev89o.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"value": ""

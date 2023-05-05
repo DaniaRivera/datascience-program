@@ -7,13 +7,17 @@
 			"metadata": "Nombre de instancia de Data Factory",
 			"defaultValue": "adf-upds-djrc-dev-0u7"
 		},
+		"ADLS_LinkedService_accountKey": {
+			"type": "secureString",
+			"metadata": "Cadena protegida para \"accountKey\"de \"ADLS_LinkedService\""
+		},
 		"FileLinkedService_password": {
 			"type": "secureString",
 			"metadata": "Cadena protegida para \"password\"de \"FileLinkedService\""
 		},
-		"ADLS_LinkedService_accountKey": {
-			"type": "secureString",
-			"metadata": "Cadena protegida para \"accountKey\"de \"ADLS_LinkedService\""
+		"ADLS_LinkedService_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://dlsupdsdjrcdev89o.dfs.core.windows.net/"
 		},
 		"FileLinkedService_properties_typeProperties_host": {
 			"type": "string",
@@ -22,10 +26,6 @@
 		"FileLinkedService_properties_typeProperties_userId": {
 			"type": "string",
 			"defaultValue": "DANIA"
-		},
-		"ADLS_LinkedService_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://dlsupdsdjrcdev89o.dfs.core.windows.net/"
 		},
 		"containerUri": {
 			"type": "string",
@@ -72,6 +72,26 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adf-upds-djrc-dev-0u7_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-upds-djrc-dev-0u7_ArmTemplate_0')]"
+			]
 		}
 	]
 }
