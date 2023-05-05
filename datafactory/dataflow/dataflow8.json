@@ -40,7 +40,8 @@
 				"          LastAccessDate = toTimestamp(LastAccessDate),",
 				"          Reputation = toInteger(Reputation),",
 				"          UpVotes = toInteger(UpVotes),",
-				"          Views = toInteger(Views)) ~> derivedColumn1"
+				"          Views = toInteger(Views),",
+				"          AccountId = toInteger(AccountId)) ~> derivedColumn1"
 			]
 		}
 	}
