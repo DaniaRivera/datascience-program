@@ -31,7 +31,7 @@
 				"     format: 'parquet') ~> source1",
 				"source1 derive(Id = toInteger(Id),",
 				"          UserId = toInteger(UserId),",
-				"          Date = toTimestamp(Date)) ~> derivedColumn1"
+				"          Date = toDate(Date)) ~> derivedColumn1"
 			]
 		}
 	}
