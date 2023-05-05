@@ -28,7 +28,7 @@
 						"referenceName": "dataflow1",
 						"type": "DataFlowReference",
 						"datasetParameters": {
-							"source1": {
+							"RawBadges": {
 								"filename": "badges.parquet",
 								"upname": "badges"
 							}
