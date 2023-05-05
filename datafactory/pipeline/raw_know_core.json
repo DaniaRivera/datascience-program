@@ -12,7 +12,7 @@
 				}
 			},
 			{
-				"name": "Copy data1",
+				"name": "Copy badges",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -76,7 +76,7 @@
 				]
 			},
 			{
-				"name": "Copy data2",
+				"name": "Copy comments",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -140,7 +140,7 @@
 				]
 			},
 			{
-				"name": "Copy data3",
+				"name": "Copy linktypes",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -204,7 +204,7 @@
 				]
 			},
 			{
-				"name": "Copy data4",
+				"name": "Copy postlinks",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -268,7 +268,7 @@
 				]
 			},
 			{
-				"name": "Copy data5",
+				"name": "Copy posts 2008",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -332,7 +332,7 @@
 				]
 			},
 			{
-				"name": "Copy data6",
+				"name": "Copy posts 2009",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -396,7 +396,7 @@
 				]
 			},
 			{
-				"name": "Copy data7",
+				"name": "Copy posttypes",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -460,7 +460,7 @@
 				]
 			},
 			{
-				"name": "Copy data8",
+				"name": "Copy users",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -524,7 +524,7 @@
 				]
 			},
 			{
-				"name": "Copy data9",
+				"name": "Copy votes",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -588,7 +588,7 @@
 				]
 			},
 			{
-				"name": "Copy data10",
+				"name": "Copy votetypes",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
