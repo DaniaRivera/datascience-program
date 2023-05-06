@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"workspaceName": {
+			"value": "synw-upds-djrc-dev-i4o"
+		},
+		"synw-upds-djrc-dev-i4o-WorkspaceDefaultSqlServer_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=tcp:synw-upds-djrc-dev-i4o.sql.azuresynapse.net,1433;Initial Catalog=@{linkedService().DBName}"
+		},
+		"synw-upds-djrc-dev-i4o-WorkspaceDefaultStorage_properties_typeProperties_url": {
+			"value": "https://dlsupdsdjrcdev89o.dfs.core.windows.net"
+		}
+	}
+}
