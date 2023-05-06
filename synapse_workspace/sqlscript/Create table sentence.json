@@ -1,13 +1,13 @@
 {
-	"name": "SQL script 1",
+	"name": "Create table sentence",
 	"properties": {
 		"content": {
-			"query": "",
+			"query": "USE updatalakehouse;\nGO\n\n-----------------------------------------------\n--Paso 01\n-----------------------------------------------\nSELECT TOP (10) *\nFrom OPENROWSET (BULK '/raw/data/users/*.parquet',\nDATA_SOURCE= 'ExternalUPDataSource',\nFORMAT ='PARQUET')  AS [file]\nGO;\n\n-----------------------------------------------\n--Paso 02\n-----------------------------------------------\nCREATE EXTERNAL TABLE master_party.dim_users3(\n    Id NVARCHAR(50),   \n    CreationDate NVARCHAR(50),\n    DownVotes NVARCHAR(50),\n    LastAccessDate NVARCHAR(50),\n    Reputation NVARCHAR(50),\n    UpVotes NVARCHAR(50),\n    Views NVARCHAR(50),\n    AccountId NVARCHAR(50),\n    Email NVARCHAR(80)\n)\n WITH (\n     LOCATION = '/raw/data/users/',\n     DATA_SOURCE = ExternalUPDataSource,  \n     FILE_FORMAT = UPParquetFileFormat\n )\nGO\n\n-----------------------------------------------\n--Paso 03\n-----------------------------------------------\nSELECT TOP(10) * FROM master_party.dim_users3;\nGO\n-----------------------------------------------\n--Paso 04\n-----------------------------------------------\nCREATE EXTERNAL TABLE business_knowa.bi_users_dim \nWITH (\n    LOCATION = '/business/business_knowa/bi_users_dim/',\n    DATA_SOURCE = ExternalUPDataSource,  \n    FILE_FORMAT = UPParquetFileFormat\n) AS \nSELECT TOP(100) Id, CreationDate FROM master_party.dim_users3;\n\nSELECT * FROM business_knowa.bi_users_dim;\n\n\n\n\n\nWITH ShortCreationTable(shortdate) AS (\nSELECT CONVERT(DATE, SUBSTRING(creation_date, 1,10)) AS shortdate\nFROM master_transaction.t_interaction\n), DistinctDateTable (distinctdate) AS (\nSELECT DISTINCT shortdate as distinctdate\nFROM ShortCreationTable\n)\nSELECT ROW_NUMBER() OVER(ORDER BY distinctdate ASC) AS period_id, \ndistinctdate as period,\nYEAR(distinctdate) as year,\nMONTH(distinctdate) as month\nFROM DistinctDateTable;",
 			"metadata": {
 				"language": "sql"
 			},
 			"currentConnection": {
-				"databaseName": "master",
+				"databaseName": "updatalakehouse",
 				"poolName": "Built-in"
 			},
 			"resultLimit": 5000
